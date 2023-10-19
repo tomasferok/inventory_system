@@ -6,7 +6,7 @@ defmodule InventorySystem.Repo.Migrations.CreateProducts do
       add :desciption, :text
       add :price, :float
       add :amount, :integer
-
+      add :reception_id, references(:receptions, on_delete: :delete_all)
       timestamps()
     end
   end
