@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :inventory_system, InventorySystem.Repo,
   username: "root",
-  password: "",
+  password: "root",
   hostname: "localhost",
   database: "inventory_system_dev",
   stacktrace: true,
