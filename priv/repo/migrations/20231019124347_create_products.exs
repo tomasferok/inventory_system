@@ -5,6 +5,7 @@ defmodule InventorySystem.Repo.Migrations.CreateProducts do
     create table(:products) do
       add :desciption, :text
       add :price, :float
+      add :amount, :integer
 
       timestamps()
     end

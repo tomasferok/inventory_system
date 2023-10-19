@@ -5,6 +5,7 @@ defmodule InventorySystem.Products.Product do
   schema "products" do
     field :desciption, :string
     field :price, :float
+    field :amount, :integer
 
     timestamps()
   end
@@ -12,7 +13,7 @@ defmodule InventorySystem.Products.Product do
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:desciption, :price])
-    |> validate_required([:desciption, :price])
+    |> cast(attrs, [:desciption, :price, amount])
+    |> validate_required([:desciption, :price, amount])
   end
 end
