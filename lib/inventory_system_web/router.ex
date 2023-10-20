@@ -1,4 +1,5 @@
 defmodule InventorySystemWeb.Router do
+  alias InventorySystemWeb.ProductoController
   use InventorySystemWeb, :router
 
   pipeline :browser do
@@ -18,6 +19,20 @@ defmodule InventorySystemWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+  end
+
+  scope "/api", InventorySystemWeb do
+    pipe_through :api
+
+    get "/products", ProductController, :index
+    get "/products/:id", ProductController, :show
+    post "/products", ProductController, :create
+    put "/products/:id", ProductController, :update
+    delete "/products/:id", ProductController, :delete
+
+    get "/receptions", ReceptionController, :index
+    get "/receptions/:id", ReceptionController, :show
+    post "/receptions", ReceptionController, :create
   end
 
   # Other scopes may use custom stacks.
