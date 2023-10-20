@@ -7,7 +7,5 @@ defmodule InventorySystem.Repo.Migrations.CreateReceptions do
 
       timestamps()
     end
-
-    create unique_index(:receptions, [:nro])
   end
 end

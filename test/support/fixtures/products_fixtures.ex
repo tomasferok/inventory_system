@@ -18,4 +18,20 @@ defmodule InventorySystem.ProductsFixtures do
 
     product
   end
+
+  @doc """
+  Generate a product.
+  """
+  def product_fixture(attrs \\ %{}) do
+    {:ok, product} =
+      attrs
+      |> Enum.into(%{
+        amount: 42,
+        description: "some description",
+        price: 120.5
+      })
+      |> InventorySystem.Products.create_product()
+
+    product
+  end
 end

@@ -3,18 +3,17 @@ defmodule InventorySystem.Products.Product do
   import Ecto.Changeset
 
   schema "products" do
-    field :desciption, :string
-    field :price, :float
+    field :description, :string
     field :amount, :integer
-    belongs_to :reception, InventorySystem.Receptions.Reception
-
+    field :price, :float
+    field :reception_id, :integer
     timestamps()
   end
 
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:desciption, :price, :amount])
-    |> validate_required([:desciption, :price, :amount])
+    |> cast(attrs, [:description, :amount, :price, :reception_id])
+    |> validate_required([:description, :amount, :price, :reception_id])
   end
 end

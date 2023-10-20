@@ -8,7 +8,7 @@ defmodule InventorySystem.ProductsTest do
 
     import InventorySystem.ProductsFixtures
 
-    @invalid_attrs %{desciption: nil, price: nil}
+    @invalid_attrs %{description: nil, amount: nil, price: nil}
 
     test "list_products/0 returns all products" do
       product = product_fixture()
@@ -21,10 +21,11 @@ defmodule InventorySystem.ProductsTest do
     end
 
     test "create_product/1 with valid data creates a product" do
-      valid_attrs = %{desciption: "some desciption", price: 120.5}
+      valid_attrs = %{description: "some description", amount: 42, price: 120.5}
 
       assert {:ok, %Product{} = product} = Products.create_product(valid_attrs)
-      assert product.desciption == "some desciption"
+      assert product.description == "some description"
+      assert product.amount == 42
       assert product.price == 120.5
     end
 
@@ -34,10 +35,11 @@ defmodule InventorySystem.ProductsTest do
 
     test "update_product/2 with valid data updates the product" do
       product = product_fixture()
-      update_attrs = %{desciption: "some updated desciption", price: 456.7}
+      update_attrs = %{description: "some updated description", amount: 43, price: 456.7}
 
       assert {:ok, %Product{} = product} = Products.update_product(product, update_attrs)
-      assert product.desciption == "some updated desciption"
+      assert product.description == "some updated description"
+      assert product.amount == 43
       assert product.price == 456.7
     end
 

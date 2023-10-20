@@ -4,7 +4,7 @@ defmodule InventorySystem.Receptions.Reception do
 
   schema "receptions" do
     field :nro, :integer
-    has_many :products, InventorySystem.Products.Product
+    has_many(:products, InventorySystem.Products.Product)
     timestamps()
   end
 
