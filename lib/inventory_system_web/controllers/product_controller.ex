@@ -12,7 +12,12 @@ defmodule InventorySystemWeb.ProductController do
   end
 
   def create(conn, %{"product" => product_params}) do
-    with {:ok, %Product{} = product} <- Products.create_product(product_params) do
+    task =
+      Task.async(fn ->
+        Products.create_product(product_params)
+      end)
+
+    with {:ok, product} <- Task.await(task) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", ~p"/api/products/#{product}")
