@@ -29,7 +29,8 @@ defmodule InventorySystemWeb.Router do
     post "/products", ProductController, :create
     put "/products/:id", ProductController, :update
     delete "/products/:id", ProductController, :delete
-    get "/products/filterecep/:id", ProductController, :get_product_by_receptionid
+    get "/products/filterecep/:reception_id", ProductController, :get_product_by_receptionid
+    get "/products/orderbyprice", ProductController, :order_product_by_price
 
     get "/receptions", ReceptionController, :index
     get "/receptions/:id", ReceptionController, :show
