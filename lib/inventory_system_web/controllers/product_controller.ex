@@ -3,11 +3,23 @@ defmodule InventorySystemWeb.ProductController do
 
   alias InventorySystem.Products
   alias InventorySystem.Products.Product
+  import InventorySystem.Products.QueryFilters.ProductFilters
+
 
   action_fallback InventorySystemWeb.FallbackController
 
   def index(conn, _params) do
     products = Products.list_products()
+    render(conn, :index, products: products)
+  end
+
+  def get_product_by_receptionid(conn, %{"reception_id" => reception_id}) do
+    products = filter_by_receptionid(reception_id)
+    render(conn, :index, products: products)
+  end
+
+  def order_product_by_price(conn, _params) do
+    products = order_by_price()
     render(conn, :index, products: products)
   end
 
